@@ -14,6 +14,16 @@ const GlobalStyles = createGlobalStyle`
 		overflow-y: scroll;
 	}
 
+	body, input, button, textarea {
+		font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+	}
+
+	#root {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+
 	a {
 		color: inherit;
 		text-decoration: none;
