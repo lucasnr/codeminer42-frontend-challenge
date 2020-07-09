@@ -1,25 +1,16 @@
 import React from 'react';
 
 import Header from './Header';
-import Product from './Product';
+import Products from './Products';
 import Cart from './Cart';
-import { Container, Content, Products, CheckoutButton } from './styles';
+import { Container, Content, CheckoutButton } from './styles';
 
 const ShoppingPage: React.FC = () => {
 	return (
 		<Container>
 			<Header />
 			<Content>
-				<Products>
-					<Product />
-					<Product />
-					<Product />
-
-					<Product />
-					<Product />
-					<Product />
-				</Products>
-
+				<Products />
 				<Cart />
 
 				<CheckoutButton>Checkout</CheckoutButton>

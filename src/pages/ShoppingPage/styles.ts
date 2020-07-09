@@ -27,12 +27,6 @@ export const Content = styled.main`
 	}
 `;
 
-export const Products = styled.section`
-	display: grid;
-	grid-gap: 2rem;
-	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-`;
-
 export const CheckoutButton = styled.button`
 	background-color: ${({ theme }) => theme.colors.primary};
 	border: none;
