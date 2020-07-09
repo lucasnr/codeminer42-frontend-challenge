@@ -31,6 +31,7 @@ export interface ModifySucceededAction {
 	type: CartTypes;
 	products: IProduct[];
 	subtotal: number;
+	shipping: number;
 	total: number;
 }
 

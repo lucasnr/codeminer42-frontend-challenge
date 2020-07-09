@@ -12,7 +12,7 @@ import {
 import { ApplicationState } from '~/store';
 
 export function* addProduct(action: AddRequestedAction) {
-	const { products, total, subtotal }: CartState = yield select(
+	const { products, subtotal }: CartState = yield select(
 		(state: ApplicationState) => state.cart
 	);
 	const toAddProduct = action.product;
@@ -31,19 +31,21 @@ export function* addProduct(action: AddRequestedAction) {
 	else newProducts = [...products, { ...toAddProduct, quantity: 1 }];
 
 	const newSubtotal = subtotal + toAddProduct.price;
-	const newTotal = total + toAddProduct.price;
+	const shipping = calculateShipping(newProducts, newSubtotal);
+	const total = newSubtotal + shipping;
 
 	const toPutAction: ModifySucceededAction = {
 		type: CartTypes.MODIFY_SUCCEEDED,
 		products: newProducts,
 		subtotal: newSubtotal,
-		total: newTotal,
+		shipping,
+		total,
 	};
 	yield put(toPutAction);
 }
 
 export function* removeProduct(action: RemoveRequestedAction) {
-	const { products, total, subtotal }: CartState = yield select(
+	const { products, subtotal }: CartState = yield select(
 		(state: ApplicationState) => state.cart
 	);
 
@@ -64,13 +66,26 @@ export function* removeProduct(action: RemoveRequestedAction) {
 		});
 
 	const newSubtotal = subtotal - price;
-	const newTotal = total - price;
+	const shipping = calculateShipping(newProducts, subtotal);
+	const total = newSubtotal + shipping;
 
 	const toPutAction: ModifySucceededAction = {
 		type: CartTypes.MODIFY_SUCCEEDED,
 		products: newProducts,
 		subtotal: newSubtotal,
-		total: newTotal,
+		shipping,
+		total,
 	};
 	yield put(toPutAction);
+}
+
+function calculateShipping(products: IProduct[], subtotal: number): number {
+	if (subtotal > 400 || products.length === 0) return 0;
+
+	const weight = products
+		.map((product) => product.quantity)
+		.reduce((prev, quantity) => prev + quantity);
+
+	if (weight <= 10) return 30;
+	return 30 + Math.floor((weight - 10) / 5) * 7;
 }

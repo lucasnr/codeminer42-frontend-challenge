@@ -17,6 +17,7 @@ const reducer: Reducer<CartState> = (state = INITAL_STATE, action) => {
 				...state,
 				products: action.products,
 				subtotal: action.subtotal,
+				shipping: action.shipping,
 				total: action.total,
 			};
 		default:
