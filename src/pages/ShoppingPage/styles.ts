@@ -3,13 +3,28 @@ import styled from 'styled-components';
 export const Container = styled.div``;
 
 export const Content = styled.main`
-	display: grid;
-	grid-gap: 2rem;
-	grid-template-columns: 2fr 1.25fr;
 	margin: 0px auto;
 	max-width: 70rem;
 	padding: 4rem 1rem;
 	width: 100%;
+
+	> *:not(:last-child) {
+		margin-bottom: 2rem;
+
+		@media (min-width: 768px) {
+			margin-bottom: 0px;
+		}
+	}
+
+	@media (min-width: 768px) {
+		display: grid;
+		grid-gap: 2rem;
+		grid-template-columns: 2fr 1.875fr;
+	}
+
+	@media (min-width: 992px) {
+		grid-template-columns: 2fr 1.25fr;
+	}
 `;
 
 export const Products = styled.section`

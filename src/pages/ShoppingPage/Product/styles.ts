@@ -7,10 +7,14 @@ export const Container = styled.div`
 	img {
 		background-color: rgba(0, 0, 0, 0.1);
 		display: block;
-		height: 7.5rem;
+		height: 9rem;
 		object-fit: cover;
 		object-position: center;
 		width: 100%;
+
+		@media (min-width: 576px) {
+			height: 7.5rem;
+		}
 	}
 `;
 
