@@ -36,6 +36,10 @@ const GlobalStyles = createGlobalStyle`
 	ul {
 		list-style: none;
 	}
+
+	h1 {
+		margin: 0px;
+	}
 `;
 
 export default GlobalStyles;
