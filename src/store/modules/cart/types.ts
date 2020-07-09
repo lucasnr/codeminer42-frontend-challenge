@@ -2,13 +2,15 @@
 
 export enum CartTypes {
 	ADD_REQUESTED = '@cart/ADD_REQUESTED',
-	ADD_SUCCEEDED = '@cart/ADD_SUCCEEDED',
+	REMOVE_REQUESTED = '@cart/REMOVE_REQUESTED',
+	MODIFY_SUCCEEDED = '@cart/MODIFY_SUCCEEDED',
 }
 
 export interface ToAddProductType {
 	id: number;
 	name: string;
 	price: number;
+	available: number;
 }
 
 export interface IProduct extends ToAddProductType {
@@ -20,7 +22,12 @@ export interface AddRequestedAction {
 	product: ToAddProductType;
 }
 
-export interface AddSucceededAction {
+export interface RemoveRequestedAction {
+	type: CartTypes;
+	id: number;
+}
+
+export interface ModifySucceededAction {
 	type: CartTypes;
 	products: IProduct[];
 	subtotal: number;

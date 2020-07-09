@@ -1,13 +1,36 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import { Container, Content, Name, Row, Controls } from './styles';
 
 import getImage from '~/utils/images';
 
+import { addProduct, removeProduct } from '~/store/modules/cart/actions';
 import { IProduct } from '~/store/modules/cart/types';
 
-const Product: React.FC<IProduct> = ({ id, name, quantity, price }) => {
+const Product: React.FC<IProduct> = ({
+	id,
+	name,
+	quantity,
+	price,
+	available,
+}) => {
 	const image = useMemo(() => getImage(id), [id]);
+
+	const dispatch = useDispatch();
+	const handleIncreaseOnCart = useCallback(() => {
+		if (quantity === available) {
+			toast.error('This product is no longer available');
+			return;
+		}
+
+		dispatch(addProduct({ id, name, price, available }));
+	}, [available, dispatch, id, name, price, quantity]);
+
+	const handleDecreaseOnCart = useCallback(() => {
+		dispatch(removeProduct(id));
+	}, [dispatch, id]);
 
 	return (
 		<Container>
@@ -21,8 +44,18 @@ const Product: React.FC<IProduct> = ({ id, name, quantity, price }) => {
 				</Row>
 			</Content>
 			<Controls>
-				<button>+</button>
-				<button>-</button>
+				<button
+					aria-label="Increase amount on cart"
+					onClick={handleIncreaseOnCart}
+				>
+					+
+				</button>
+				<button
+					aria-label="Decrease amount on cart"
+					onClick={handleDecreaseOnCart}
+				>
+					-
+				</button>
 			</Controls>
 		</Container>
 	);

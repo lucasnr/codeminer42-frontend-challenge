@@ -12,7 +12,7 @@ const INITAL_STATE: CartState = {
 
 const reducer: Reducer<CartState> = (state = INITAL_STATE, action) => {
 	switch (action.type) {
-		case CartTypes.ADD_SUCCEEDED:
+		case CartTypes.MODIFY_SUCCEEDED:
 			return {
 				...state,
 				products: action.products,

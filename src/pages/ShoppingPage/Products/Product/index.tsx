@@ -36,8 +36,8 @@ const Product: React.FC<IProduct> = ({
 			return;
 		}
 
-		dispatch(addProduct({ id, name, price }));
-	}, [id, name, price, dispatch, available]);
+		dispatch(addProduct({ id, name, price, available: initialAvailable }));
+	}, [available, dispatch, id, name, price, initialAvailable]);
 
 	return (
 		<Container>
