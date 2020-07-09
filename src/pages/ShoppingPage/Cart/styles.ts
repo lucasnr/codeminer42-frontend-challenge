@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-	background-color: rgba(0, 0, 0, 0.05);
+	background-color: ${({ theme }) => theme.background.primary};
 	border-radius: 0.5rem;
 	overflow: hidden;
 `;

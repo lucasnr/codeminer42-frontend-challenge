@@ -19,7 +19,7 @@ export const Container = styled.div`
 `;
 
 export const Info = styled.div`
-	background-color: rgba(0, 0, 0, 0.05);
+	background-color: ${({ theme }) => theme.background.primary};
 	padding: 1rem;
 
 	> * {

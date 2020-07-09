@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
 	}
 
 	body {
-		background-color: ${({ theme }) => theme.background.primary};
+		background-color: ${({ theme }) => theme.background.secondary};
 		color: ${({ theme }) => theme.text.primary};
 		overflow-y: scroll;
 	}

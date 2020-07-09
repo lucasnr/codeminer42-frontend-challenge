@@ -5,6 +5,7 @@ declare module 'styled-components' {
 		title: string;
 		background: {
 			primary: string;
+			secondary: string;
 		};
 		text: {
 			primary: string;
