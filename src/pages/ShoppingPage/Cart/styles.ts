@@ -20,14 +20,15 @@ export const Content = styled.div`
 `;
 
 export const Discount = styled.form`
-	display: flex;
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: 1fr auto;
 
 	input {
 		border: 0.0625rem solid rgba(0, 0, 0, 0.5);
 		border-radius: 0.25rem;
 		font-size: 0.875rem;
 		font-weight: 400;
-		margin-right: 1rem;
 		padding: 0.625rem 1rem;
 		width: 100%;
 	}
