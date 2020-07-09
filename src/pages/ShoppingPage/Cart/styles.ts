@@ -11,7 +11,7 @@ export const Title = styled.h2`
 	color: ${({ theme }) => theme.text.secondary};
 	font-size: 1.5rem;
 	font-weight: 600;
-	padding: 0.5rem;
+	padding: 0.75rem 0.5rem;
 	text-align: center;
 `;
 
