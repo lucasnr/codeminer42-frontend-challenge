@@ -29,16 +29,16 @@ const Products: React.FC = () => {
 		}
 	}, []);
 
-	return (
+	return products ? (
 		<Container>
-			{products ? (
-				products.map((product) => <Product key={product.id} {...product} />)
-			) : (
-				<Message error={error ? true : false}>
-					{error || 'Loading products...'}
-				</Message>
-			)}
+			{products.map((product) => (
+				<Product key={product.id} {...product} />
+			))}
 		</Container>
+	) : (
+		<Message error={error ? true : false}>
+			{error || 'Loading products...'}
+		</Message>
 	);
 };
 

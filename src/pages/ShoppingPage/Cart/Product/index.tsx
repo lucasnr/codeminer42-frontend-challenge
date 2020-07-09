@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { Container, Content, Name, Row, Controls } from './styles';
 
-const Product: React.FC = () => {
+import getImage from '~/utils/images';
+
+import { IProduct } from '~/store/modules/cart/types';
+
+const Product: React.FC<IProduct> = ({ id, name, quantity, price }) => {
+	const image = useMemo(() => getImage(id), [id]);
+
 	return (
 		<Container>
-			<img
-				alt="Product's cover"
-				src="https://pics.me.me/thumb_kinda-want-this-to-happen-everyone-start-posting-oranges-at-68325797.png"
-			/>
+			<img alt={name} src={image} />
 
 			<Content>
-				<Name>Product name</Name>
+				<Name>{name}</Name>
 				<Row>
-					<span>Quantity: 4</span>
-					<span>$ 123,45</span>
+					<span>Quantity: {quantity}</span>
+					<span>$ {price}</span>
 				</Row>
 			</Content>
 			<Controls>

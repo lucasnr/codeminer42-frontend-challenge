@@ -32,6 +32,7 @@ export const Row = styled.div`
 	font-size: 1rem;
 	font-weight: 400;
 	justify-content: space-between;
+	margin-top: 0.5rem;
 `;
 
 export const Controls = styled.div`
