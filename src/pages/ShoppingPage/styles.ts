@@ -1,3 +1,32 @@
 import styled from 'styled-components';
 
 export const Container = styled.div``;
+
+export const Content = styled.main`
+	display: grid;
+	grid-gap: 2rem;
+	grid-template-columns: 2fr 1.25fr;
+	margin: 0px auto;
+	max-width: 70rem;
+	padding: 4rem 1rem;
+	width: 100%;
+`;
+
+export const Products = styled.section`
+	display: grid;
+	grid-gap: 2rem;
+	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+`;
+
+export const CheckoutButton = styled.button`
+	background-color: ${({ theme }) => theme.colors.primary};
+	border: none;
+	border-radius: 0.5rem;
+	color: ${({ theme }) => theme.text.secondary};
+	font-size: 1.25rem;
+	font-weight: 500;
+	grid-column: 2 / 3;
+	padding: 1rem;
+	text-transform: uppercase;
+	width: 100%;
+`;
