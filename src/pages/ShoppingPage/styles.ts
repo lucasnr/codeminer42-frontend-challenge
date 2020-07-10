@@ -33,7 +33,7 @@ export const CheckoutButton = styled.button`
 	border-radius: 0.5rem;
 	color: ${({ theme }) => theme.text.secondary};
 	font-size: 1.25rem;
-	font-weight: 500;
+	font-weight: 600;
 	grid-column: 2 / 3;
 	padding: 1rem;
 	text-transform: uppercase;

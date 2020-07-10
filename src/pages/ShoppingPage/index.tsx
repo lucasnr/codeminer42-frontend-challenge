@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { toast } from 'react-toastify';
 
 import Header from './Header';
 import Products from './Products';
@@ -6,6 +7,10 @@ import Cart from './Cart';
 import { Container, Content, CheckoutButton } from './styles';
 
 const ShoppingPage: React.FC = () => {
+	const handleCheckout = useCallback(() => {
+		toast.info('Checkout successfully done');
+	}, []);
+
 	return (
 		<Container>
 			<Header />
@@ -13,7 +18,7 @@ const ShoppingPage: React.FC = () => {
 				<Products />
 				<Cart />
 
-				<CheckoutButton>Checkout</CheckoutButton>
+				<CheckoutButton onClick={handleCheckout}>Checkout</CheckoutButton>
 			</Content>
 		</Container>
 	);

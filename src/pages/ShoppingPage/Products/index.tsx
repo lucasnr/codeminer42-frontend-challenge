@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Product from './Product';
-import { Container, Message } from './styles';
+import { Container, Message, Loading } from './styles';
 
 import api from '~/services/api';
 
@@ -20,12 +20,15 @@ const Products: React.FC = () => {
 		fetchProducts();
 
 		async function fetchProducts() {
-			try {
-				const { data } = await api.get('products.json');
-				setProducts(data.products);
-			} catch (error) {
-				setError('Ops... Looks like something went wrong');
+			for (let i = 0; i < 5; i++) {
+				try {
+					const { data } = await api.get('products.json');
+					setProducts(data.products);
+					return;
+				} catch (error) {}
 			}
+
+			setError('Ops... Looks like something went wrong.');
 		}
 	}, []);
 
@@ -36,9 +39,7 @@ const Products: React.FC = () => {
 			))}
 		</Container>
 	) : (
-		<Message error={error ? true : false}>
-			{error || 'Loading products...'}
-		</Message>
+		<Message>{error || <Loading aria-label="Loading products..." />}</Message>
 	);
 };
 
