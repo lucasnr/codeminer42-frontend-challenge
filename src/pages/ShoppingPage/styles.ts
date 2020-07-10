@@ -31,6 +31,7 @@ export const CheckoutButton = styled.button`
 	background-color: ${({ theme }) => theme.colors.primary};
 	border: none;
 	border-radius: 0.5rem;
+	box-shadow: 0.25rem 0.5rem 0.5rem rgba(0, 0, 0, 0.125);
 	color: ${({ theme }) => theme.text.secondary};
 	font-size: 1.25rem;
 	font-weight: 600;
