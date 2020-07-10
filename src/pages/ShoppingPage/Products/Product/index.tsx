@@ -53,7 +53,9 @@ const Product: React.FC<IProduct> = ({
 					<span>{available} left</span>
 				</Price>
 			</Info>
-			<Button onClick={handleAddToCart}>Buy</Button>
+			<Button onClick={handleAddToCart} disabled={available === 0}>
+				{available === 0 ? 'Unavailable' : 'Buy'}
+			</Button>
 		</Container>
 	);
 };
