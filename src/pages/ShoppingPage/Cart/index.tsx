@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { ApplicationState } from '~/store';
@@ -6,6 +6,8 @@ import { ApplicationState } from '~/store';
 import Product from './Product';
 import Discount from './Discount';
 import { Container, Title, Content, Totals, Vouchers, Voucher } from './styles';
+
+import { formatMoney } from '~/utils/format';
 
 const Cart: React.FC = () => {
 	const {
@@ -16,6 +18,20 @@ const Cart: React.FC = () => {
 		products,
 		vouchers,
 	} = useSelector((state: ApplicationState) => state.cart);
+
+	const {
+		subtotalFormatted,
+		shippingFormatted,
+		discountFormatted,
+		totalFormatted,
+	} = useMemo(() => {
+		return {
+			subtotalFormatted: formatMoney(subtotal),
+			shippingFormatted: formatMoney(shipping),
+			discountFormatted: formatMoney(discount),
+			totalFormatted: formatMoney(total),
+		};
+	}, [discount, shipping, subtotal, total]);
 
 	return (
 		<Container>
@@ -33,22 +49,22 @@ const Cart: React.FC = () => {
 			<Totals>
 				<li>
 					<span>Subtotal</span>
-					<span>$ {subtotal}</span>
+					<span>$ {subtotalFormatted}</span>
 				</li>
 				<li>
 					<span>Shipping</span>
-					<span>$ {shipping}</span>
+					<span>$ {shippingFormatted}</span>
 				</li>
 				<Vouchers>
 					<span>Discount</span>
 					{vouchers.map((voucher) => (
 						<Voucher key={voucher.id}>{voucher.code}</Voucher>
 					))}
-					<span>$ {discount}</span>
+					<span>$ {discountFormatted}</span>
 				</Vouchers>
 				<li>
 					<span>Total</span>
-					<span>$ {total}</span>
+					<span>$ {totalFormatted}</span>
 				</li>
 			</Totals>
 		</Container>

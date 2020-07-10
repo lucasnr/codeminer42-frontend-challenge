@@ -10,6 +10,7 @@ import { addProduct } from '~/store/modules/cart/actions';
 import { IProduct } from '../index';
 
 import getImage from '~/utils/images';
+import { formatMoney } from '~/utils/format';
 
 const Product: React.FC<IProduct> = ({
 	id,
@@ -39,13 +40,15 @@ const Product: React.FC<IProduct> = ({
 		dispatch(addProduct({ id, name, price, available: initialAvailable }));
 	}, [available, dispatch, id, name, price, initialAvailable]);
 
+	const priceFormatted = useMemo(() => formatMoney(price), [price]);
+
 	return (
 		<Container>
 			<img alt={name} src={image} />
 			<Info>
 				<Name>{name}</Name>
 				<Price>
-					<span>$ {price}</span>
+					<span>$ {priceFormatted}</span>
 					<div className="dot"></div>
 					<span>{available} left</span>
 				</Price>

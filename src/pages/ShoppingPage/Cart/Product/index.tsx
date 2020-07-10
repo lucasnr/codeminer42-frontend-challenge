@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { Container, Content, Name, Row, Controls } from './styles';
 
 import getImage from '~/utils/images';
+import { formatMoney } from '~/utils/format';
 
 import { addProduct, removeProduct } from '~/store/modules/cart/actions';
 import { IProduct } from '~/store/modules/cart/types';
@@ -32,6 +33,8 @@ const Product: React.FC<IProduct> = ({
 		dispatch(removeProduct(id));
 	}, [dispatch, id]);
 
+	const priceFormatted = useMemo(() => formatMoney(price), [price]);
+
 	return (
 		<Container>
 			<img alt={name} src={image} />
@@ -40,7 +43,7 @@ const Product: React.FC<IProduct> = ({
 				<Name>{name}</Name>
 				<Row>
 					<span>Quantity: {quantity}</span>
-					<span>$ {price}</span>
+					<span>$ {priceFormatted}</span>
 				</Row>
 			</Content>
 			<Controls>
