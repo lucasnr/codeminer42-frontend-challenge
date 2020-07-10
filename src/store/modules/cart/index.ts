@@ -7,6 +7,7 @@ const INITAL_STATE: CartState = {
 	subtotal: 0,
 	shipping: 0,
 	discount: 0,
+	vouchers: [],
 	total: 0,
 };
 
@@ -18,6 +19,16 @@ const reducer: Reducer<CartState> = (state = INITAL_STATE, action) => {
 				products: action.products,
 				subtotal: action.subtotal,
 				shipping: action.shipping,
+				discount: action.discount,
+				total: action.total,
+			};
+		case CartTypes.ADD_VOUCHER_SUCCEEDED:
+			return {
+				...state,
+				subtotal: action.subtotal,
+				shipping: action.shipping,
+				discount: action.discount,
+				vouchers: action.vouchers,
 				total: action.total,
 			};
 		default:

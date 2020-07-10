@@ -41,7 +41,7 @@ const Product: React.FC<IProduct> = ({
 
 	return (
 		<Container>
-			<img alt="Product cover" src={image} />
+			<img alt={name} src={image} />
 			<Info>
 				<Name>{name}</Name>
 				<Price>

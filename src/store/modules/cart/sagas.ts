@@ -7,12 +7,15 @@ import {
 	RemoveRequestedAction,
 	ModifySucceededAction,
 	IProduct,
+	AddVoucherRequestedAction,
+	AddVoucherSucceededAction,
+	IVoucher,
 } from './types';
 
 import { ApplicationState } from '~/store';
 
 export function* addProduct(action: AddRequestedAction) {
-	const { products, subtotal }: CartState = yield select(
+	const { products, subtotal, vouchers }: CartState = yield select(
 		(state: ApplicationState) => state.cart
 	);
 	const toAddProduct = action.product;
@@ -31,21 +34,25 @@ export function* addProduct(action: AddRequestedAction) {
 	else newProducts = [...products, { ...toAddProduct, quantity: 1 }];
 
 	const newSubtotal = subtotal + toAddProduct.price;
-	const shipping = calculateShipping(newProducts, newSubtotal);
-	const total = newSubtotal + shipping;
+	const { shipping, discount, total } = calculateValues(
+		newProducts,
+		newSubtotal,
+		vouchers
+	);
 
 	const toPutAction: ModifySucceededAction = {
 		type: CartTypes.MODIFY_SUCCEEDED,
 		products: newProducts,
 		subtotal: newSubtotal,
 		shipping,
+		discount,
 		total,
 	};
 	yield put(toPutAction);
 }
 
 export function* removeProduct(action: RemoveRequestedAction) {
-	const { products, subtotal }: CartState = yield select(
+	const { products, subtotal, vouchers }: CartState = yield select(
 		(state: ApplicationState) => state.cart
 	);
 
@@ -66,21 +73,59 @@ export function* removeProduct(action: RemoveRequestedAction) {
 		});
 
 	const newSubtotal = subtotal - price;
-	const shipping = calculateShipping(newProducts, subtotal);
-	const total = newSubtotal + shipping;
+	const { shipping, discount, total } = calculateValues(
+		newProducts,
+		newSubtotal,
+		vouchers
+	);
 
 	const toPutAction: ModifySucceededAction = {
 		type: CartTypes.MODIFY_SUCCEEDED,
 		products: newProducts,
 		subtotal: newSubtotal,
 		shipping,
+		discount,
 		total,
 	};
 	yield put(toPutAction);
 }
 
-function calculateShipping(products: IProduct[], subtotal: number): number {
+export function* addVoucher(action: AddVoucherRequestedAction) {
+	let { products, subtotal, vouchers }: CartState = yield select(
+		(state: ApplicationState) => state.cart
+	);
+
+	const voucher = action.voucher;
+	vouchers = [...vouchers, voucher];
+
+	const { shipping, discount, total } = calculateValues(
+		products,
+		subtotal,
+		vouchers
+	);
+	const toPutAction: AddVoucherSucceededAction = {
+		type: CartTypes.ADD_VOUCHER_SUCCEEDED,
+		subtotal,
+		shipping,
+		discount,
+		vouchers,
+		total,
+	};
+	yield put(toPutAction);
+}
+
+function calculateShipping(
+	products: IProduct[],
+	subtotal: number,
+	vouchers: IVoucher[]
+): number {
 	if (subtotal > 400 || products.length === 0) return 0;
+
+	const freeShippingVoucher = vouchers.find(
+		(voucher) => voucher.type === 'shipping'
+	);
+	if (freeShippingVoucher && subtotal >= (freeShippingVoucher.minValue || 0))
+		return 0;
 
 	const weight = products
 		.map((product) => product.quantity)
@@ -88,4 +133,35 @@ function calculateShipping(products: IProduct[], subtotal: number): number {
 
 	if (weight <= 10) return 30;
 	return 30 + Math.floor((weight - 10) / 5) * 7;
+}
+
+function calculateDiscount(subtotal: number, vouchers: IVoucher[]) {
+	let discount = 0;
+
+	vouchers.forEach((voucher) => {
+		switch (voucher.type) {
+			case 'percentual':
+				discount += subtotal * (voucher.amount / 100);
+				break;
+			case 'fixed':
+				discount += voucher.amount;
+				break;
+		}
+	});
+
+	return discount;
+}
+
+function calculateValues(
+	products: IProduct[],
+	subtotal: number,
+	vouchers: IVoucher[]
+) {
+	const shipping = calculateShipping(products, subtotal, vouchers);
+	const discount = calculateDiscount(subtotal, vouchers);
+
+	let total = subtotal + shipping - discount;
+	if (total < 0) total = 0;
+
+	return { shipping, discount, total };
 }

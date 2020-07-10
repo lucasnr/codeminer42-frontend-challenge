@@ -4,12 +4,18 @@ import { useSelector } from 'react-redux';
 import { ApplicationState } from '~/store';
 
 import Product from './Product';
-import { Container, Title, Content, Discount, Totals } from './styles';
+import Discount from './Discount';
+import { Container, Title, Content, Totals, Vouchers, Voucher } from './styles';
 
 const Cart: React.FC = () => {
-	const { subtotal, shipping, discount, total, products } = useSelector(
-		(state: ApplicationState) => state.cart
-	);
+	const {
+		subtotal,
+		shipping,
+		discount,
+		total,
+		products,
+		vouchers,
+	} = useSelector((state: ApplicationState) => state.cart);
 
 	return (
 		<Container>
@@ -21,10 +27,7 @@ const Cart: React.FC = () => {
 					))}
 				</ul>
 
-				<Discount>
-					<input type="text" placeholder="Discount code" />
-					<button type="submit">Apply</button>
-				</Discount>
+				<Discount />
 			</Content>
 
 			<Totals>
@@ -36,10 +39,13 @@ const Cart: React.FC = () => {
 					<span>Shipping</span>
 					<span>$ {shipping}</span>
 				</li>
-				<li>
+				<Vouchers>
 					<span>Discount</span>
+					{vouchers.map((voucher) => (
+						<Voucher key={voucher.id}>{voucher.code}</Voucher>
+					))}
 					<span>$ {discount}</span>
-				</li>
+				</Vouchers>
 				<li>
 					<span>Total</span>
 					<span>$ {total}</span>
