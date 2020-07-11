@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders without fail and matches snapshot 1`] = `
+<styled.header>
+  <styled.div>
+    <styled.h1>
+      Shopping
+    </styled.h1>
+    <styled.div>
+      <img
+        alt="User's avatar"
+        src="diverseui-male-67.jpg"
+      />
+      <span>
+        John Doe
+      </span>
+    </styled.div>
+  </styled.div>
+</styled.header>
+`;

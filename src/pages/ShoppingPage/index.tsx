@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { toast } from 'react-toastify';
 
-import Header from './Header';
+import Header from '~/components/Header';
 import Products from './Products';
 import Cart from './Cart';
 import { Container, Content, CheckoutButton } from './styles';
