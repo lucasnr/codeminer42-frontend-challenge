@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Product> renders without fail and matches snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ThemeProvider
+    theme={
+      Object {
+        "background": Object {
+          "primary": "#fdfdfd",
+          "secondary": "#f6f6f6",
+        },
+        "colors": Object {
+          "primary": "#266dd3",
+          "secondary": "#344055",
+        },
+        "text": Object {
+          "primary": "#333",
+          "secondary": "#fff",
+        },
+        "title": "light",
+      }
+    }
+  >
+    <Product
+      available={10}
+      id={5}
+      name="Strawberry"
+      price={15}
+    >
+      <styled.div>
+        <div
+          className="sc-AxjAm iYuIGw"
+        >
+          <img
+            alt="Strawberry"
+            src="https://dumont.sp.gov.br/lib/img/no-image.jpg"
+          />
+          <styled.div>
+            <div
+              className="sc-AxirZ yPRtw"
+            >
+              <styled.h3>
+                <h3
+                  className="sc-AxiKw eoCXsE"
+                >
+                  Strawberry
+                </h3>
+              </styled.h3>
+              <styled.h4>
+                <h4
+                  className="sc-AxhCb ijKSTM"
+                >
+                  <span
+                    data-testid="price"
+                  >
+                    $ 
+                    15.00
+                  </span>
+                  <div
+                    className="dot"
+                  />
+                  <span
+                    data-testid="available"
+                  >
+                    10
+                     left
+                  </span>
+                </h4>
+              </styled.h4>
+            </div>
+          </styled.div>
+          <styled.button
+            disabled={false}
+            onClick={[Function]}
+          >
+            <button
+              className="sc-AxhUy ngccn"
+              disabled={false}
+              onClick={[Function]}
+            >
+              Buy
+            </button>
+          </styled.button>
+        </div>
+      </styled.div>
+    </Product>
+  </ThemeProvider>
+</Provider>
+`;

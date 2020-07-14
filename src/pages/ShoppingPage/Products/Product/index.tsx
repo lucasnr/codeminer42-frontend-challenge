@@ -2,7 +2,7 @@ import React, { useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { Container, Info, Name, Price, Button } from './styles';
+import { Container, Info, Name, Row, Button } from './styles';
 
 import { ApplicationState } from '~/store';
 import { addProduct } from '~/store/modules/cart/actions';
@@ -47,11 +47,11 @@ const Product: React.FC<IApiProduct> = ({
 			<img alt={name} src={image} />
 			<Info>
 				<Name>{name}</Name>
-				<Price>
-					<span>$ {priceFormatted}</span>
+				<Row>
+					<span data-testid="price">$ {priceFormatted}</span>
 					<div className="dot"></div>
-					<span>{available} left</span>
-				</Price>
+					<span data-testid="available">{available} left</span>
+				</Row>
 			</Info>
 			<Button onClick={handleAddToCart} disabled={available === 0}>
 				{available === 0 ? 'Unavailable' : 'Buy'}

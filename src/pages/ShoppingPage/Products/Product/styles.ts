@@ -33,7 +33,7 @@ export const Name = styled.h3`
 	font-weight: 600;
 `;
 
-export const Price = styled.h4`
+export const Row = styled.h4`
 	display: flex;
 	font-size: 1rem;
 	font-weight: 400;
