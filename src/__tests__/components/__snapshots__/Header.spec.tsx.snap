@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header component renders without fail and matches snapshot 1`] = `
+exports[`<Header> renders without fail and matches snapshot 1`] = `
 <styled.header>
   <styled.div>
     <styled.h1>
