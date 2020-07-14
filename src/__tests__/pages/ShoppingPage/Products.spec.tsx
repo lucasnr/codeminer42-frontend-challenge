@@ -11,21 +11,21 @@ import { ApplicationState } from '~/store';
 import * as api from '~/services/api';
 
 const mockStore = configureStore<ApplicationState>([]);
+const initialState: ApplicationState = {
+	cart: {
+		products: [],
+		subtotal: 0,
+		shipping: 0,
+		discount: 0,
+		vouchers: [],
+		total: 0,
+	},
+};
 
 describe('<Products>', () => {
 	let store: MockStoreEnhanced<ApplicationState>;
 
 	beforeEach(() => {
-		const initialState: ApplicationState = {
-			cart: {
-				products: [],
-				subtotal: 0,
-				shipping: 0,
-				discount: 0,
-				vouchers: [],
-				total: 0,
-			},
-		};
 		store = mockStore(initialState);
 	});
 
