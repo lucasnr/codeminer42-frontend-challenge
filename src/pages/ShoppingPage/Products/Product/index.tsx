@@ -7,12 +7,12 @@ import { Container, Info, Name, Price, Button } from './styles';
 import { ApplicationState } from '~/store';
 import { addProduct } from '~/store/modules/cart/actions';
 
-import { IProduct } from '../index';
+import { IApiProduct } from '~/services/api';
 
 import getImage from '~/utils/images';
 import { formatMoney } from '~/utils/format';
 
-const Product: React.FC<IProduct> = ({
+const Product: React.FC<IApiProduct> = ({
 	id,
 	name,
 	price,

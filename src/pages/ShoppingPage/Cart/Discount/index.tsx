@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import { Container } from './styles';
 
-import api from '~/services/api';
+import { getVouchers } from '~/services/api';
 
 import { ApplicationState } from '~/store';
 import { IVoucher } from '~/store/modules/cart/types';
@@ -25,7 +25,7 @@ const Discount: React.FC = () => {
 
 			setHandlingSubmit(true);
 			try {
-				const { data } = await api.get('vouchers.json');
+				const { data } = await getVouchers();
 				const apiVouchers: IVoucher[] = data.vouchers;
 
 				const voucher = apiVouchers.find((voucher) => voucher.code === value);
