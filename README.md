@@ -1,3 +1,20 @@
+# Codeminer42 Front-End Dev Challenge
+
+This is a React Single Page Web Application developed as a challenge for a job at [Codeminer42](https://www.codeminer42.com/). The final result is deployed at Netlify and can be viewed [here](https://codeminer42-challenge.netlify.app/).
+
+## Made with
+
+- react
+- typescript
+- styled-components
+- redux
+- react-redux
+- redux-saga
+- axios
+- react-toastify
+- jest
+- enzyme
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
