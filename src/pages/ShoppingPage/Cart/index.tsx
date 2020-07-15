@@ -5,6 +5,7 @@ import { ApplicationState } from '~/store';
 
 import Product from './Product';
 import Discount from './Discount';
+import EmptyCart from './EmptyCart';
 import { Container, Title, Content, Totals, Vouchers, Voucher } from './styles';
 
 import { formatMoney } from '~/utils/format';
@@ -36,37 +37,43 @@ const Cart: React.FC = () => {
 	return (
 		<Container>
 			<Title>Shopping Cart</Title>
-			<Content>
-				<ul>
-					{products.map((product) => (
-						<Product key={product.id} {...product} />
-					))}
-				</ul>
+			{products.length > 0 ? (
+				<>
+					<Content>
+						<ul>
+							{products.map((product) => (
+								<Product key={product.id} {...product} />
+							))}
+						</ul>
 
-				<Discount />
-			</Content>
+						<Discount />
+					</Content>
 
-			<Totals>
-				<li>
-					<span>Subtotal</span>
-					<span data-testid="subtotal">$ {subtotalFormatted}</span>
-				</li>
-				<li>
-					<span>Shipping</span>
-					<span data-testid="shipping">$ {shippingFormatted}</span>
-				</li>
-				<Vouchers>
-					<span>Discount</span>
-					{vouchers.map((voucher) => (
-						<Voucher key={voucher.id}>{voucher.code}</Voucher>
-					))}
-					<span data-testid="discount">$ {discountFormatted}</span>
-				</Vouchers>
-				<li>
-					<span>Total</span>
-					<span data-testid="total">$ {totalFormatted}</span>
-				</li>
-			</Totals>
+					<Totals>
+						<li>
+							<span>Subtotal</span>
+							<span data-testid="subtotal">$ {subtotalFormatted}</span>
+						</li>
+						<li>
+							<span>Shipping</span>
+							<span data-testid="shipping">$ {shippingFormatted}</span>
+						</li>
+						<Vouchers>
+							<span>Discount</span>
+							{vouchers.map((voucher) => (
+								<Voucher key={voucher.id}>{voucher.code}</Voucher>
+							))}
+							<span data-testid="discount">$ {discountFormatted}</span>
+						</Vouchers>
+						<li>
+							<span>Total</span>
+							<span data-testid="total">$ {totalFormatted}</span>
+						</li>
+					</Totals>
+				</>
+			) : (
+				<EmptyCart />
+			)}
 		</Container>
 	);
 };

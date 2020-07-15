@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Cart> renders without fail and matches snapshot 1`] = `
+exports[`<Cart> renders empty without fail and matches snapshot 1`] = `
 <Provider
   store={
     Object {
@@ -35,18 +35,98 @@ exports[`<Cart> renders without fail and matches snapshot 1`] = `
     <Cart>
       <styled.section>
         <section
-          className="sc-AxheI hzpGKZ"
+          className="sc-fzoLsD lmTMkQ"
         >
           <styled.h2>
             <h2
-              className="sc-Axmtr cQYXZv"
+              className="sc-fzpans VPZhh"
+            >
+              Shopping Cart
+            </h2>
+          </styled.h2>
+          <EmptyCart>
+            <styled.div>
+              <div
+                className="sc-AxheI ivOzZe"
+              >
+                <styled.h2>
+                  <h2
+                    className="sc-Axmtr lbvZms"
+                  >
+                    Looks like your cart is empty
+                  </h2>
+                </styled.h2>
+                <styled.span>
+                  <span
+                    className="sc-AxmLO flfsQY"
+                  >
+                    :/
+                  </span>
+                </styled.span>
+                <styled.h3>
+                  <h3
+                    className="sc-fzozJi jrzUig"
+                  >
+                    Try adding some products to your cart and they will show up here
+                  </h3>
+                </styled.h3>
+              </div>
+            </styled.div>
+          </EmptyCart>
+        </section>
+      </styled.section>
+    </Cart>
+  </ThemeProvider>
+</Provider>
+`;
+
+exports[`<Cart> renders with products without fail and matches snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ThemeProvider
+    theme={
+      Object {
+        "background": Object {
+          "primary": "#fdfdfd",
+          "secondary": "#f6f6f6",
+        },
+        "colors": Object {
+          "primary": "#266dd3",
+          "secondary": "#344055",
+        },
+        "text": Object {
+          "primary": "#333",
+          "secondary": "#fff",
+        },
+        "title": "light",
+      }
+    }
+  >
+    <Cart>
+      <styled.section>
+        <section
+          className="sc-fzoLsD lmTMkQ"
+        >
+          <styled.h2>
+            <h2
+              className="sc-fzpans VPZhh"
             >
               Shopping Cart
             </h2>
           </styled.h2>
           <styled.div>
             <div
-              className="sc-AxmLO MiSuD"
+              className="sc-fzplWN grCRTV"
             >
               <ul>
                 <Product
@@ -140,7 +220,7 @@ exports[`<Cart> renders without fail and matches snapshot 1`] = `
           </styled.div>
           <styled.ul>
             <ul
-              className="sc-fzozJi hVVpxZ"
+              className="sc-fznyAO cTnyjm"
             >
               <li>
                 <span>
@@ -166,7 +246,7 @@ exports[`<Cart> renders without fail and matches snapshot 1`] = `
               </li>
               <styled.li>
                 <li
-                  className="sc-fzoLsD cwnaTJ"
+                  className="sc-fznKkj cWqYpR"
                 >
                   <span>
                     Discount

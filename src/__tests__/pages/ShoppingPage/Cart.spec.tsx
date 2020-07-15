@@ -12,6 +12,7 @@ import { mountWithProviders, flushPromises } from '~/utils/tests';
 
 import { Provider } from 'react-redux';
 import realStore, { ApplicationState } from '~/store';
+import { addProduct } from '~/store/modules/cart/actions';
 
 import * as api from '~/services/api';
 
@@ -47,7 +48,22 @@ describe('<Cart>', () => {
 		});
 	});
 
-	it('renders without fail and matches snapshot', async () => {
+	it('renders with products without fail and matches snapshot', async () => {
+		expect(wrapper).toMatchSnapshot();
+	});
+
+	it('renders empty without fail and matches snapshot', async () => {
+		store = mockStore({
+			cart: {
+				products: [],
+				subtotal: 0,
+				shipping: 0,
+				discount: 0,
+				vouchers: [],
+				total: 0,
+			},
+		});
+		wrapper = mountWithProviders(<Cart />, store);
 		expect(wrapper).toMatchSnapshot();
 	});
 
@@ -93,6 +109,15 @@ describe('<Cart>', () => {
 		const apiSpy = jest
 			.spyOn(api, 'getVouchers')
 			.mockResolvedValue(fakeResponse);
+
+		realStore.dispatch(
+			addProduct({
+				id: 1,
+				name: 'Strawberry',
+				price: 10,
+				available: 10,
+			})
+		);
 
 		wrapper = mountWithProviders(
 			<Provider store={realStore}>

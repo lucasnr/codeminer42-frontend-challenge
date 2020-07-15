@@ -4,6 +4,8 @@ export const Container = styled.section`
 	background-color: ${({ theme }) => theme.background.primary};
 	border-radius: 0.5rem;
 	box-shadow: 0.25rem 0.5rem 0.5rem rgba(0, 0, 0, 0.125);
+	display: flex;
+	flex-direction: column;
 	overflow: hidden;
 `;
 
