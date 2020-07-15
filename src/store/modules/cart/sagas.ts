@@ -114,7 +114,7 @@ export function* addVoucher(action: AddVoucherRequestedAction) {
 	yield put(toPutAction);
 }
 
-function calculateShipping(
+export function calculateShipping(
 	products: IProduct[],
 	subtotal: number,
 	vouchers: IVoucher[]
@@ -135,7 +135,7 @@ function calculateShipping(
 	return 30 + Math.floor((weight - 10) / 5) * 7;
 }
 
-function calculateDiscount(subtotal: number, vouchers: IVoucher[]) {
+export function calculateDiscount(subtotal: number, vouchers: IVoucher[]) {
 	let discount = 0;
 
 	vouchers.forEach((voucher) => {
@@ -152,7 +152,7 @@ function calculateDiscount(subtotal: number, vouchers: IVoucher[]) {
 	return discount;
 }
 
-function calculateValues(
+export function calculateValues(
 	products: IProduct[],
 	subtotal: number,
 	vouchers: IVoucher[]
