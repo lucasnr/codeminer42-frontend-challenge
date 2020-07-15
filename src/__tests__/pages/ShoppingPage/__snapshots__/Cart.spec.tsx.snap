@@ -1,0 +1,200 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Cart> renders without fail and matches snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ThemeProvider
+    theme={
+      Object {
+        "background": Object {
+          "primary": "#fdfdfd",
+          "secondary": "#f6f6f6",
+        },
+        "colors": Object {
+          "primary": "#266dd3",
+          "secondary": "#344055",
+        },
+        "text": Object {
+          "primary": "#333",
+          "secondary": "#fff",
+        },
+        "title": "light",
+      }
+    }
+  >
+    <Cart>
+      <styled.section>
+        <section
+          className="sc-AxheI hzpGKZ"
+        >
+          <styled.h2>
+            <h2
+              className="sc-Axmtr cQYXZv"
+            >
+              Shopping Cart
+            </h2>
+          </styled.h2>
+          <styled.div>
+            <div
+              className="sc-AxmLO MiSuD"
+            >
+              <ul>
+                <Product
+                  available={9}
+                  id={5}
+                  key="5"
+                  name="Strawberry"
+                  price={15}
+                  quantity={1}
+                >
+                  <styled.li>
+                    <li
+                      className="sc-AxjAm jqfJtR"
+                    >
+                      <img
+                        alt="Strawberry"
+                        src="https://dumont.sp.gov.br/lib/img/no-image.jpg"
+                      />
+                      <styled.div>
+                        <div
+                          className="sc-AxiKw cLgGgt"
+                        >
+                          <styled.h4>
+                            <h4
+                              className="sc-AxirZ cvDiiJ"
+                            >
+                              Strawberry
+                            </h4>
+                          </styled.h4>
+                          <styled.div>
+                            <div
+                              className="sc-AxhCb feUlwF"
+                            >
+                              <span>
+                                Quantity: 
+                                1
+                              </span>
+                              <span>
+                                $ 
+                                15.00
+                              </span>
+                            </div>
+                          </styled.div>
+                        </div>
+                      </styled.div>
+                      <styled.div>
+                        <div
+                          className="sc-AxhUy jJYQuF"
+                        >
+                          <button
+                            aria-label="Increase amount on cart"
+                            onClick={[Function]}
+                          >
+                            +
+                          </button>
+                          <button
+                            aria-label="Decrease amount on cart"
+                            onClick={[Function]}
+                          >
+                            -
+                          </button>
+                        </div>
+                      </styled.div>
+                    </li>
+                  </styled.li>
+                </Product>
+              </ul>
+              <Discount>
+                <styled.form
+                  onSubmit={[Function]}
+                >
+                  <form
+                    className="sc-AxgMl ixeDyB"
+                    onSubmit={[Function]}
+                  >
+                    <input
+                      onChange={[Function]}
+                      placeholder="Discount code"
+                      type="text"
+                      value=""
+                    />
+                    <button
+                      type="submit"
+                    >
+                      Apply
+                    </button>
+                  </form>
+                </styled.form>
+              </Discount>
+            </div>
+          </styled.div>
+          <styled.ul>
+            <ul
+              className="sc-fzozJi hVVpxZ"
+            >
+              <li>
+                <span>
+                  Subtotal
+                </span>
+                <span
+                  data-testid="subtotal"
+                >
+                  $ 
+                  15.00
+                </span>
+              </li>
+              <li>
+                <span>
+                  Shipping
+                </span>
+                <span
+                  data-testid="shipping"
+                >
+                  $ 
+                  30.00
+                </span>
+              </li>
+              <styled.li>
+                <li
+                  className="sc-fzoLsD cwnaTJ"
+                >
+                  <span>
+                    Discount
+                  </span>
+                  <span
+                    data-testid="discount"
+                  >
+                    $ 
+                    0.00
+                  </span>
+                </li>
+              </styled.li>
+              <li>
+                <span>
+                  Total
+                </span>
+                <span
+                  data-testid="total"
+                >
+                  $ 
+                  45.00
+                </span>
+              </li>
+            </ul>
+          </styled.ul>
+        </section>
+      </styled.section>
+    </Cart>
+  </ThemeProvider>
+</Provider>
+`;

@@ -49,22 +49,22 @@ const Cart: React.FC = () => {
 			<Totals>
 				<li>
 					<span>Subtotal</span>
-					<span>$ {subtotalFormatted}</span>
+					<span data-testid="subtotal">$ {subtotalFormatted}</span>
 				</li>
 				<li>
 					<span>Shipping</span>
-					<span>$ {shippingFormatted}</span>
+					<span data-testid="shipping">$ {shippingFormatted}</span>
 				</li>
 				<Vouchers>
 					<span>Discount</span>
 					{vouchers.map((voucher) => (
 						<Voucher key={voucher.id}>{voucher.code}</Voucher>
 					))}
-					<span>$ {discountFormatted}</span>
+					<span data-testid="discount">$ {discountFormatted}</span>
 				</Vouchers>
 				<li>
 					<span>Total</span>
-					<span>$ {totalFormatted}</span>
+					<span data-testid="total">$ {totalFormatted}</span>
 				</li>
 			</Totals>
 		</Container>
